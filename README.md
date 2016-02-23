@@ -50,7 +50,7 @@ You can also pass custom `cookies` and `headers`:
 wh = Wallhaven(headers={'User-Agent': 'wallhaven_bot'})
 ```
 
-### Retriving single wallpaper
+### Retrieving single wallpaper
 
 Wallpaper can be retrieved with `wallpaper()` method. It takes `wallpaper_id` and returns `Wallpaper` object.
 
@@ -135,7 +135,7 @@ women = wh.search(
 )
 
 # Random wallpapers
-random = wh.random(resolutions=['1920x1080', count=1]
+random = wh.random(resolutions=['1920x1080'], count=1]
 
 # Latest wallpapers
 latest = wh.latest(count=10)
