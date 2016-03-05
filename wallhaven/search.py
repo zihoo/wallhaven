@@ -17,7 +17,7 @@ class ValueOrDefaultParameter:
 
 class SelectOrDefaultParameter:
     """Select search parameter.
-    Returns value of predefined list of choices or default value.
+    Returns value from predefined list of choices or default value.
     """
 
     choices = ()

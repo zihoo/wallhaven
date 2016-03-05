@@ -21,7 +21,7 @@ Response = namedtuple(
 
 
 class WallpaperIsBlocked(Exception):
-    """Wallpaper is forbidden to unauthorized users."""
+    """Wallpaper is forbidden for unauthorized users."""
     pass
 
 
@@ -31,7 +31,7 @@ class WallpaperNotFound(Exception):
 
 
 class UserNotFound(Exception):
-    """User not found."""
+    """User is not found."""
     pass
 
 
@@ -82,7 +82,7 @@ class Wallhaven:
 
     @asyncio.coroutine
     def read(self, response):
-        """Read content accroding to the content-type."""
+        """Read content according to the content-type."""
         content_type = None
         content = None
 
