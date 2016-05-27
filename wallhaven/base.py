@@ -1,11 +1,10 @@
 """Base."""
 
+import aiohttp
 import asyncio
 import cgi
-from collections import namedtuple
 import os
-
-import aiohttp
+from collections import namedtuple
 from lxml import html
 
 from routing import router
@@ -68,7 +67,7 @@ class Wallhaven:
             'password': password
         }
 
-        response = yield from aiohttp.request('post', router.login, data=payload)
+        response = yield from aiohttp.ClientSession().request('post', router.login, data=payload)
         cookies = response.cookies
         yield from response.release()
 
@@ -108,7 +107,7 @@ class Wallhaven:
     @asyncio.coroutine
     def get(self, *args, **kwargs):
         """Coroutine which performs GET request."""
-        response = yield from aiohttp.request('get', *args, **kwargs)
+        response = yield from aiohttp.ClientSession().request('get', *args, **kwargs)
         return (yield from self.read(response))
 
     @asyncio.coroutine
@@ -169,7 +168,8 @@ class Wallhaven:
             elif item.status == 404:
                 raise WallpaperNotFound(item.url)
 
-    def _get_wallpaper(self, response):
+    @staticmethod
+    def _get_wallpaper(response):
         """Get wallpaper."""
         if response.status == 200:
             return Wallpaper(response.page)
@@ -178,7 +178,8 @@ class Wallhaven:
         elif response.status == 404:
             raise WallpaperNotFound(response.url)
 
-    def _get_user(self, response):
+    @staticmethod
+    def _get_user(response):
         """Get user."""
         if response.status == 200:
             return User(response.page)

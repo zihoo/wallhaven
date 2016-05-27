@@ -1,7 +1,6 @@
 """User profile."""
 
 import json
-
 from lxml import html
 
 

@@ -1,7 +1,6 @@
 """Wallpaper."""
 
 import json
-
 from lxml import html
 
 

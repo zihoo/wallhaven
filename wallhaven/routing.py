@@ -6,11 +6,16 @@ import os
 class Router:
     """URL manager."""
 
-    base = 'http://alpha.wallhaven.cc'
+    base = 'https://alpha.wallhaven.cc'
+    favorites = os.path.join(base, 'favorites')
     latest = os.path.join(base, 'latest')
     random = os.path.join(base, 'random')
     search = os.path.join(base, 'search')
     login = os.path.join(base, 'auth', 'login')
+
+    def favorite(self, favorite_id):
+        """Favorite page."""
+        return os.path.join(self.base, 'favorites', favorite_id)
 
     def wallpaper(self, wallpaper_id):
         """Wallpaper page."""
@@ -30,4 +35,3 @@ class Router:
 
 
 router = Router()
-
